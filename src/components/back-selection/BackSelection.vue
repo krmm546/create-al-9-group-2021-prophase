@@ -1,10 +1,14 @@
 <template>
   <div class="backSection">
-    <ToggleButton @click="toggle" :isOpen="isOpen"></ToggleButton>
+
+    <ToggleButton @click="toggle" :isOpen="isOpen"/>
+
     <SelectButtons/>
-    <div :class="contentClasses">
-      <slot></slot>
+
+    <div :class="{'content': true, 'open': isOpen}">
+      <slot/>
     </div>
+
   </div>
 </template>
 
@@ -21,11 +25,6 @@ import SelectButtons from "@/components/back-selection/parts/select-buttons/Sele
 export default class BackSelection extends Vue {
   isOpen = false
   routes = ['HTML', 'STYLE', 'SCRIPT', 'BACK']
-
-  get contentClasses(): string[] {
-    if (this.isOpen) return ['content', 'open']
-    return ['content']
-  }
 
   toggle(): void {
     this.isOpen = !this.isOpen

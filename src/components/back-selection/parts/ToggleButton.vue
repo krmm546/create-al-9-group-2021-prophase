@@ -1,8 +1,6 @@
 <template>
   <button class="toggle-button" @click="onClick">
-    <span :class="topBarClasses"></span>
-    <span :class="middleBarClasses"></span>
-    <span :class="bottomBarClasses"></span>
+    <span :class="{ 'open': isOpen }" v-for="i in 3" :key="i"/>
   </button>
 </template>
 
@@ -11,18 +9,6 @@ import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 
 @Component
 export default class ToggleButton extends Vue {
-  get topBarClasses(): string[] {
-    if (this.isOpen) return ['top', 'bar', 'open']
-    return ['top', 'bar']
-  }
-  get middleBarClasses(): string[] {
-    if (this.isOpen) return ['middle', 'bar', 'open']
-    return ['middle', 'bar']
-  }
-  get bottomBarClasses(): string[] {
-    if (this.isOpen) return ['bottom', 'bar', 'open']
-    return ['bottom', 'bar']
-  }
   @Prop({ default: false, required: true })
   isOpen!: boolean
 
@@ -44,14 +30,14 @@ export default class ToggleButton extends Vue {
   outline: none;
   z-index: 2;
 
-  .bar {
+  span {
     display: block;
     width: 100%;
     height: 2px;
     background-color: white;
     transition: all 0.3s;
 
-    &.top {
+    &:nth-of-type(1) {
       margin-bottom: 10px;
       &.open {
         transform-origin: right;
@@ -59,7 +45,7 @@ export default class ToggleButton extends Vue {
       }
     }
 
-    &.middle {
+    &:nth-of-type(2) {
       &.open {
         transform: translateY(-12px);
         opacity: 1;
@@ -69,7 +55,7 @@ export default class ToggleButton extends Vue {
       opacity: 0;
     }
 
-    &.bottom.open {
+    &:nth-of-type(3).open {
       transform-origin: right;
       transform: rotate(-45deg) translate(3px, -18px);
       width: 140%;

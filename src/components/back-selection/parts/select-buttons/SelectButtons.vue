@@ -1,6 +1,6 @@
 <template>
   <div class="select-buttons">
-    <SelectButton v-for="route in routes" :key="route" :message="route"></SelectButton>
+    <SelectButton class="open" v-for="route in routes" :key="route" :message="route"/>
   </div>
 </template>
 

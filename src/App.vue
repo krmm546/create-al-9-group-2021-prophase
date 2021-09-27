@@ -1,6 +1,6 @@
 <template>
   <BackSelection>
-    <router-view></router-view>
+    <router-view/>
   </BackSelection>
 </template>
 

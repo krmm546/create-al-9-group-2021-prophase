@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <BackSelection></BackSelection>
+    こんにちは
   </div>
 </template>
 
@@ -15,3 +15,10 @@ import BackSelection from '@/components/back-selection/BackSelection.vue'
 })
 export default class Home extends Vue {}
 </script>
+
+<style lang="scss" scoped>
+.home {
+  background-color: black;
+  color: white;
+}
+</style>

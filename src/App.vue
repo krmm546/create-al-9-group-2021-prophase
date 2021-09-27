@@ -1,6 +1,6 @@
 <template>
   <BackSelection>
-    <HelloWorld style="border: 1px solid white"></HelloWorld>
+    <router-view></router-view>
   </BackSelection>
 </template>
 

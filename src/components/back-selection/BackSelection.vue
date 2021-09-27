@@ -1,14 +1,9 @@
 <template>
   <div class="backSection">
-    <button class="section-toggle-btn" @click="toggle">
-      <span class="top bar"></span>
-      <span class="bottom bar"></span>
-    </button>
+
+    <ToggleButton @click="toggle" :isOpen="isOpen"></ToggleButton>
     <div class="select-buttons">
-      <button class="select-button">HTML</button>
-      <button class="select-button">STYLE</button>
-      <button class="select-button">SCRIPT</button>
-      <button class="select-button">BACK</button>
+      <SelectButton v-for="route in routes" :key="route" :message="route"></SelectButton>
     </div>
 
     <div :class="contentClasses">
@@ -19,14 +14,23 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-@Component
+import ToggleButton from './parts/ToggleButton.vue'
+import SelectButton from "@/components/back-selection/parts/SelectButton.vue";
+@Component({
+  components: {
+    ToggleButton,
+    SelectButton
+  }
+})
 export default class BackSelection extends Vue {
-  isOpen = false;
+  isOpen = false
+  routes = ['HTML', 'STYLE', 'SCRIPT', 'BACK']
+
   get contentClasses(): string[] {
     if (this.isOpen) return ['content', 'open']
     return ['content']
   }
+
   toggle(): void {
     this.isOpen = !this.isOpen
   }
@@ -55,29 +59,7 @@ export default class BackSelection extends Vue {
     }
   }
 
-  .section-toggle-btn {
-    position: absolute;
-    display: block;
-    right: 10px;
-    top: 10px;
-    width: 40px;
-    height: 16px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    z-index: 2;
 
-    .bar {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background-color: white;
-
-      &.top {
-        margin-bottom: 10px;
-      }
-    }
-  }
   .select-buttons {
     position: absolute;
     top: 150px;
@@ -85,28 +67,6 @@ export default class BackSelection extends Vue {
     display: flex;
     width: 100px;
     flex-direction: column;
-
-    .select-button {
-      display: block;
-
-      background-color: black;
-      color: white;
-
-      font-size: 18px;
-      height: 40px;
-      width: 100px;
-      margin: {
-        top: 50px;
-      }
-
-      outline: none;
-
-      border: 1px solid white;
-      border-radius: 0;
-
-      transform-origin: right top;
-      transform: rotate(90deg);
-    }
   }
 }
 </style>

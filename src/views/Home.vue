@@ -1,16 +1,18 @@
 <template>
   <div class="home">
-    こんにちは
+    <Header></Header>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import BackSelection from '@/components/back-selection/BackSelection.vue'
+import Header from "@/components/home/header/Header.vue";
 
 @Component({
   components: {
-    BackSelection
+    BackSelection,
+    Header
   },
 })
 export default class Home extends Vue {}

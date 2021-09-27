@@ -18,15 +18,14 @@ export default class SelectButton extends Vue {
 <style lang="scss" scoped>
 .select-button {
   display: block;
-
-  background-color: black;
+  background-color: transparent;
   color: white;
 
   font-size: 18px;
   height: 40px;
   width: 100px;
   margin: {
-    top: 50px;
+    top: 65px;
   }
 
   outline: none;

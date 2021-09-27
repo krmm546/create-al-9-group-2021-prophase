@@ -1,11 +1,7 @@
 <template>
   <div class="backSection">
-
     <ToggleButton @click="toggle" :isOpen="isOpen"></ToggleButton>
-    <div class="select-buttons">
-      <SelectButton v-for="route in routes" :key="route" :message="route"></SelectButton>
-    </div>
-
+    <SelectButtons/>
     <div :class="contentClasses">
       <slot></slot>
     </div>
@@ -13,13 +9,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator'
 import ToggleButton from './parts/ToggleButton.vue'
-import SelectButton from "@/components/back-selection/parts/SelectButton.vue";
+import SelectButtons from "@/components/back-selection/parts/select-buttons/SelectButtons.vue"
 @Component({
   components: {
     ToggleButton,
-    SelectButton
+    SelectButtons
   }
 })
 export default class BackSelection extends Vue {
@@ -60,14 +56,7 @@ export default class BackSelection extends Vue {
   }
 
 
-  .select-buttons {
-    position: absolute;
-    top: 150px;
-    right: 0;
-    display: flex;
-    width: 100px;
-    flex-direction: column;
-  }
+
 }
 </style>
 <style lang="scss">

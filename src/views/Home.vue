@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <Header></Header>
+    <Header/>
+    <Video/>
   </div>
 </template>
 
@@ -8,11 +9,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import BackSelection from '@/components/back-selection/BackSelection.vue'
 import Header from "@/components/home/header/Header.vue";
+import Video from "@/components/video/Video.vue";
 
 @Component({
   components: {
     BackSelection,
-    Header
+    Header,
+    Video
   },
 })
 export default class Home extends Vue {}

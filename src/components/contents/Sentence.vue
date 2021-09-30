@@ -9,11 +9,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 @Component
-export default class Video extends Vue {}
+export default class Sentence extends Vue {}
 </script>
 
 <style lang="scss" scoped>
 .sentence {
+  margin: 0;
   width: 100%;
   background-color: gray;
   font-family: "Hiragino Mincho ProN",sans-serif;
